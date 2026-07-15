@@ -30,6 +30,7 @@ class Transfer(BaseModel):
 
 class TransactionOut(BaseModel):
     id : int
+    transaction_type : str
     amount : Decimal
     description : Optional[str] = None
     sender_id : Optional[int] = None
@@ -44,6 +45,7 @@ class TransactionResponse(BaseModel):
 
 class Deposit(BaseModel):
     amount : Decimal = Field(gt=0)
+
 class Withdraw(BaseModel):
     amount : Decimal = Field(gt=0)
     

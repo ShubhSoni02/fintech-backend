@@ -56,7 +56,7 @@ def transfer(transfer : schemas.Transfer, db : Session = Depends(get_db), curren
     
     if transfer.receiver_id == current_user.id:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "Cannot transfer to yourself.")
-    
+        
     if current_user.balance < transfer.amount:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "Insufficient balance.")
     
