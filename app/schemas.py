@@ -6,7 +6,10 @@ from pydantic import BaseModel, EmailStr, Field
 class UserCreate(BaseModel):
     full_name : str
     email : EmailStr
-    phone_num : str
+    phone_num : str = Field(
+        pattern=r"^\d{10}$",
+        description="Phone Number must be exactly 10 digits"
+    )
     password : str
 
 class UserOut(BaseModel):
